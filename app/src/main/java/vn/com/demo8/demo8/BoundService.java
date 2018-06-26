@@ -12,12 +12,13 @@ public class BoundService extends Service {
     public static final String TAG="BoundService";
     private MyBinder mBinder = new MyBinder();
     MediaPlayer mediaPlayer;
+    ModelMusic modelMusic;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Log.e(TAG,"onCreate");
-        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.file);
+       // mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.file);
     }
 
     @Nullable
@@ -57,17 +58,16 @@ public class BoundService extends Service {
         }
     }
 
-s
-    public void play(){
+    public void play(ModelMusic modelMusic){
+        if(mediaPlayer!=null) {
+           mediaPlayer.release();
+        }
+        mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.file);
         mediaPlayer.start();
     }
 
     public void pause(){
         mediaPlayer.pause();
-    }
-
-    public void seekTo(int mil){
-        mediaPlayer.seekTo(mil);
     }
 
 }

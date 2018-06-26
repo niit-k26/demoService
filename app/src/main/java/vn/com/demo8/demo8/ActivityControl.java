@@ -24,7 +24,6 @@ public class ActivityControl extends AppCompatActivity {
         btnStart=(Button)findViewById(R.id.btnStartMusic);
         btnStop=(Button)findViewById(R.id.btnStopMusic);
         btnSeekTo=(Button)findViewById(R.id.btnSeekTo);
-
         btnBindToService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +36,7 @@ public class ActivityControl extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(boundService!=null) {
-                    boundService.play();
+                   // boundService.play();
                 }
             }
         });
@@ -50,8 +49,6 @@ public class ActivityControl extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     ServiceConnection serviceConnection = new ServiceConnection() {
@@ -59,7 +56,7 @@ public class ActivityControl extends AppCompatActivity {
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             BoundService.MyBinder binder = (BoundService.MyBinder)iBinder;
             boundService=binder.getService();
-            Log.e("ActivityControl","connect service successully");
+            Log.e("ActivityControl","Connect service successully");
         }
 
         @Override
